@@ -1,0 +1,116 @@
+\subsection{Introduction}
+
+Maintenant que nous avons définis notre vie au Québec, nous allons parlé la partie technique de notre année. En effet, nous avions pour but d'enrichir nos compétences techniques dans un autre environnement que le système français, et nous verrons que le résultat est intéressant.
+\\
+Lors de notre deuxième trimestre, nous avions une matière appelé "Stage-projet" permettant d'utiliser les notions apprises au cours des années précédents sur un projet que nous devions définir. En plus de cela, nous avions l'obligation d'être sous la tutelle d'un professeur souhaitant participer à notre projet.\\
+
+Seul ou en équipe, cette matière est une occasion parfaite pour réaliser un projet qui nous intéresse, nous avons donc décidé de créer une équipe pour un seul projet commun.\\
+
+Après avoir fait l'équipe, nous avons cherché un projet qui nous conviendrait tous, qui toucherait le plus de sujets possible, et qui, par ailleurs, nous plairait le plus !\\
+
+Après quelques temps, nous sommes arrivé à cette conclusion : nous voulions travailler sur un gros projet avec différentes branches. C'est-à-dire, créer un serveur avec une nouvelle technologie pour certains, une interface client web inédite, un système de gestion de base de données, et tout ça dans un système de version de contrôle opérationnel (git). Et c'est ce que le projet suivant nous offre. \\
+
+Voici donc l'intitulé de notre projet : \\
+
+\noindent
+{\rule{\linewidth}{0.5mm} }
+\begin{center}
+\color{red}
+    \textbf{Application mobile de calendrier groupé avec une gestion de paiement et d'une messagerie instantanée, géré par Socket et un serveur REST.}
+\end{center}
+\noindent
+{\rule{\linewidth}{0.5mm} }
+
+Ce nom relativement long et complet a fait son effet auprès de notre tuteur ainsi qu'au département informatique. Et voici comment nous allons présenter notre projet dans ce rapport : 
+
+\begin{itemize}
+    \item Dans la partie \textbf{Fonctionnalités} nous verrons le contenu du projet, les opérations qu'un utilisateur de l'application peut faire avec quelques illustrations de notre travail.
+    \item Dans la partie \textbf{Outils Utilisés}, Nous parlerons des téchnologies que nous avons mis en place pour développer notre projet, de la conception à la production et quelques captures de code pour comprendre les enjeux de chacuns de ces outils.
+    \item Enfin, c'est dans \textbf{Gestion du projet} nous observerons les différentes tâches que nous avons effectués pour gérer au mieux notre projet.
+\end{itemize}
+
+\subsection{Fonctionnalités}
+
+Lorsque l'on regarde notre application de loin, il semble que c'est un agenda classique permettant de s'organiser entre les différents évènements et activités. Cependant, son intérêt est de gérer plusieurs calendriers par rapport à un groupe de personnes. liant ainsi les utilisateurs pour faciliter la gestion entre eux. Par exemple, les membres du club de bridge de Chicoutimi peuvent se rejoindre sur un calendrier unique afin de voir les différentes séances d'entraînement, tournois ou bien soirée club chez soi. En plus de cela, les membres du club de bridge peuvent communiquer entre eux via une messagerie instantanée qui est implémentée dans le groupe et enfin, pour chaque évènement, les membres du club de bridge peuvent ajouter des dépenses liées à l'activité et ainsi offrir un équilibre financier entre les participants d'un évènement, pour éviter tout conflit entre les différents membres du club.
+\\
+
+Un utilisateur est unique par son login et son adresse mail. il se connecte avec un mot de passe qu'il aura créé lors de son inscription dans la partie "register". De plus, lors de la création du compte, il obtient un calendrier personnel avec le code couleur de son choix. Cependant, s'il désire avoir d'autres calendriers (pour les partager avec d'autres utilisateurs) il peut en ajouter grâce à un titre, une description et un thème qui lui sera demandé par la suite.
+Il à la possibilité de rejoindre un calendrier si un membre de ce dernier le lui partage à l'aide d'un lien qui lui serait envoyé. Après avoir entré le lien dans le champs de saisie approprié, le calendrier est ajouté à la liste des calendriers possédés par l'utilisateur et il peut ainsi naviguer entre les différents agendas. 
+\\
+
+L'usager souhaitant \textbf{enrichir un calendrier d'évènements} doit simplement se rendre vers le calendrier en question et remplir les zones d'informations tel que le titre, la date de début, la date de fin, incluant l'heure de début et de fin, et une brève description de l'évènement. Il sera ensuite ajouté sur la liste des évènements.
+\\
+Pendant la partie conception et analyse de notre besoin, nous devions trouver une fonctionnalité qui démarquerait notre agenda des multiples applications qui puissent exister sur le marché.
+C'est grâce à notre mode de vie en collocation que nous avons eu l'idée d'ajouter un module de gestion des paiements en fonction d'un évènement. Cette fonctionnalité étant peu représenté dans des agendas, nous pensions qu'il était utile de pouvoir grouper dans une application, un moyen permettant d'observer les dépenses de chacun dans des évènements et de rendre plus facile les remboursements entre les participants
+
+\newpage
+
+\subsubsection{Structure de l'application}
+
+Il est évident que l'application doit avoir une interface afin d'interagir avec un utilisateur. De plus, son rôle est principalement de traiter une grande proportion d'informations (agendas, évenements, comptes utilisateurs, etc, messages), il faut une SGBD avec de solides bases pour être le plus performant. avec Robert nous avons donc réfléchis aux différentes règles que notre structure doit réspecter.
+Le plus dur étant que nous n'avions pas de cahier des charges, nous devions définir les limites de l'application.
+
+Schéma application 4-tiers
+-Server socket
+-Server Rest
+- Ionic Application mobile
+- Oracle database
+
+\subsubsection{Interface de l'application}
+- Interface :
+parler des pages
+esthetisme
+
+\subsubsection{Mécanisme du serveur et de l'application mobile}
+
+- Requêtes au serveur 
+fluidité de l'application 
+programmation partagée
+
+
+Côté mobile :
+- Interface esthetique
+- fonctionnalités en lien avec les serveurs
+
+Côté serveur REST
+- 
+
+Côté serveur socket
+- Lancer la communication avec les participants du calendrier
+
+
+\subsection{Outils Utilisés}
+Côté Mobile
+-Ionic, Angular = Typescript, technologie nodeJS, HTML, CSS
+-Génération d'une application web sur mobile
+-Tests des fonctionnalités effectuées sur téléphone android, ios, ainsi que sur le navigateur web des pc
+
+Côté serveur
+python, REST, cx\_oracle (libraire pour communiquer avec la SGBD)
+
+Côté SGBD : oracle et sqlmodeller pour la conception (en plus de papier crayon)
+Gestion de la base de données avec un script de réinitialisation
+
+Git pour le système de version de projet
+
+Editeur de texte Visual studio code pour comprendre le principe du lancement des programmes (sans ide)
+
+\subsection{Gestion du projet}
+2 gits
+
+Kanban avec to do comme trello
+
+Parler pdt la journée des choses à faire
+
+Communication avec le tuteure tout les mois de façon agile en donnant un livrable
+
+Travail sur visual studio code avec le live share : module permettant de coder à plusieurs sur un même fichier, utile pour faire du pair programming qui était une méthode efficace
+
+Baptiste s'occupant de la partie SBGD + serveur ainsi que support pour Ionic,
+Enguérant traitant les serveurs, ajoutant des fonctionnalités comme le paiement et un algorithme de réduction de transferts d'argent,
+Victor et Robert travaillant Full Stack sur le serveur REST et sur l'interface mobile, et la communication entre le télephone et les serveurs
+
+
+\subsection{Idées d'implémentation}
+
+Bien sûr, un projet de cette ampleur est ambitieux, une multitude de chemins s'offre à nous pour ce projet.

@@ -21,11 +21,17 @@ Voici donc l'intitulé de notre projet : \\
 \noindent
 {\rule{\linewidth}{0.5mm} }
 
-Ce nom relativement long et complet a fait son effet auprès de notre tuteur ainsi qu'au département informatique. Et voici comment nous allons présenter notre projet dans ce rapport : 
+Ce nom relativement long et complet a fait son effet auprès de notre tuteur ainsi qu'au département informatique. 
+\\
+À la suite de cela, nous avons demandé à notre professeur favori, \textbf{Eric Dallaire}, de nous accompagner sur le projet, car il était le mieux placé pour participer au projet. De part le fait qu'il nous a donné des cours de Bases de données, et d'informatique mobile, il était le candidat idéal.\\
+
+Après avoir parlé avec lui du projet, avant la période de relâche en décembre; il a accepté d'être notre tuteur de projet et c'est ainsi que nous commencions notre projet officieusement. Nous entamions officiellement notre projet en janvier (début de la session d'hiver, en Janvier) avec une avance par rapport aux autres étudiants, ayant attendu le début de la session pour travailler. 
+
+Et voici comment nous allons présenter notre projet dans ce rapport : 
 
 \begin{itemize}
     \item Dans la partie \textbf{Fonctionnalités} nous verrons le contenu du projet, les opérations qu'un utilisateur de l'application peut faire avec quelques illustrations de notre travail.
-    \item Dans la partie \textbf{Outils Utilisés}, Nous parlerons des téchnologies que nous avons mis en place pour développer notre projet, de la conception à la production et quelques captures de code pour comprendre les enjeux de chacuns de ces outils.
+    \item Dans la partie \textbf{Outils Utilisés}, Nous parlerons des technologies que nous avons mis en place pour développer notre projet, de la conception à la production et quelques captures de code pour comprendre les enjeux de chacun de ces outils.
     \item Enfin, c'est dans \textbf{Gestion du projet} nous observerons les différentes tâches que nous avons effectués pour gérer au mieux notre projet.
 \end{itemize}
 
@@ -47,36 +53,54 @@ C'est grâce à notre mode de vie en collocation que nous avons eu l'idée d'ajo
 
 \subsubsection{Structure de l'application}
 
-Il est évident que l'application doit avoir une interface afin d'interagir avec un utilisateur. De plus, son rôle est principalement de traiter une grande proportion d'informations (agendas, évenements, comptes utilisateurs, etc, messages), il faut une SGBD avec de solides bases pour être le plus performant. avec Robert nous avons donc réfléchis aux différentes règles que notre structure doit réspecter.
-Le plus dur étant que nous n'avions pas de cahier des charges, nous devions définir les limites de l'application.
+Il est évident que l'application doit avoir une interface afin d'interagir avec un utilisateur. De plus, son rôle est principalement de traiter une grande proportion d'informations (agendas, évènements, comptes utilisateurs, etc, messages), il faut une SGBD avec de solides bases pour être le plus performant. avec Robert nous avons donc réfléchis aux différentes règles que notre structure doit réspecter.
+Le plus dur étant que nous n'avions pas de cahier des charges, nous devions, par conséquent, définir les limites de l'application. Et c'est à la suite de plusieurs discussions entre nous que nous avons eu le résultat suivant :
 
-Schéma application 4-tiers
--Server socket
--Server Rest
-- Ionic Application mobile
-- Oracle database
+\insererfigure{images/travail_recherche/premier_rendu_structure_bd.png}
+{19cm}
+{Premier rendu de la structure de la SGBD}
+{Première idée de la bd}
+{2cm}
+
+Certes sur cette image, petite, nous ne voyons pas vraiment les objets mais elle est plus visible dans la partie \textbf{Annexes}, mais nous observons quand même que notre projet possède assez d'instances pour nous faire travailler.
+\\
+À la suite de cette première idée de structure de stockage d'informations, nous avons pu parler avec notre professeur tuteur et il nous donna un retour plutôt intéressant, enrichissant pour les étudiants qui souhaitait en savoir d'avantages sur l'architecture et la conception d'une BD.
+
+\insererfigure{images/travail_recherche/photo_reunion_3.jpg}
+{17cm}
+{Retour du professeur de l'architecture de la SGBD}{
+Retour du professeur SGBD}
+{2cm}
+
+
+La communication avec l'application mobile était le point le plus important du projet, car il fallait savoir toutes les données que nous envoyions et que nous devions restreindre.
+
+Nous rédigions donc, à nous quatre, quelques cas d'utilisations que nous montrions au tuteur pendant la première réunion, comme nous pouvons le voir dans le brouillon ci-dessous.
+
+\insererfigure{images/travail_recherche/photo_reunion_1.jpg}
+{17cm}
+{Élements pour communiquer entre l'application mobile et le serveur}{
+Élements pour communiquer entre l'application mobile et le serveur}
+{2cm}
 
 \subsubsection{Interface de l'application}
-- Interface :
-parler des pages
-esthetisme
+Au début du projet, en parallèle de la conception de la SGBD, Victor et Enguéran ont pu s'occuper de la navigation au sein de l'application mobile, en fonction des scénarii possibles, et nous retenions en premier temps cette navigation possible.
+
+\insererfigure{images/travail_recherche/photo_reunion_2.jpg}
+{15cm}
+{Retour du professeur après la réunion du premier livrable}{
+Retour du professeur Navigation}
+{2cm}
+
+C'est sur ses bases, approuvées par le tuteur, que nous avons commencé à réaliser notre interface mobile \footnote{Notez qu'il est possible de voir les illustrations de notre application dans la partie annexe}.\\
+
+Alors que j'administrais avec Enguéran le serveur et la base de données, Robert et Victor concrétisaient le développement de l'application mobile en produisant des fenêtres simples d'utilisation (User-Friendly). Une application mobile ne doit pas être dotée de milliers de boutons, il fallait donc réfléchir aux éléments présents dans chaque fenêtre de manière à ce que l'utilisateur ne se perde pas, et puisse apprécier l'expérience de ce système d'agendas.
 
 \subsubsection{Mécanisme du serveur et de l'application mobile}
 
-- Requêtes au serveur 
-fluidité de l'application 
-programmation partagée
+Le serveur que nous avons créé était un serveur de REST qui récupérait des requêtes HTTP et qui traitait ensuite les différentes informations qu'un téléphone connecté à internet lui envoyait. Le calcul, et la récupérations des données de la SGBD sont donc fait en arrière plan, de façon distribuée, comme nous l'avions appris en deuxième année de DUT ainsi qu'au premier semestre de l'UQAC. En effet, notre serveur lançait deux applications, Socket et REST, l'un s'opérant pour un canal constant pour accéder aux messages, l'autre pour récupérer de grandes données tel que la liste de tout les événements des calendriers d'un utilisateur.\\
 
-
-Côté mobile :
-- Interface esthetique
-- fonctionnalités en lien avec les serveurs
-
-Côté serveur REST
-- 
-
-Côté serveur socket
-- Lancer la communication avec les participants du calendrier
+L'application mobile, envoie une multitude de requêtes au serveur. Cette opération permet au téléphone d'afficher uniquement les informations reçues, ce qui le rend fluide et rapide avec son design épuré.
 
 
 \subsection{Outils Utilisés}
@@ -110,7 +134,14 @@ Baptiste s'occupant de la partie SBGD + serveur ainsi que support pour Ionic,
 Enguérant traitant les serveurs, ajoutant des fonctionnalités comme le paiement et un algorithme de réduction de transferts d'argent,
 Victor et Robert travaillant Full Stack sur le serveur REST et sur l'interface mobile, et la communication entre le télephone et les serveurs
 
+debuggage et fin d
 
 \subsection{Idées d'implémentation}
 
 Bien sûr, un projet de cette ampleur est ambitieux, une multitude de chemins s'offre à nous pour ce projet.
+
+\subsection{S'adapter avec le virus}
+
+Comme tout les étudiants en secondaire, nous avons du travailler sur le projet pendant la crise sanitaire. 
+
+debbugage et finalisation du projet

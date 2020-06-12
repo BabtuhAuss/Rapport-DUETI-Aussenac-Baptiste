@@ -14,6 +14,8 @@
 \RequirePackage{subcaption}
 \RequirePackage{wallpaper}
 \RequirePackage{nomencl}
+
+\usepackage{eurosym}
 %\makenomenclature
 \RequirePackage{fancyhdr}
 %\pagestyle{fancy}
@@ -25,6 +27,7 @@
 
 
 %-------------------- Informations sur le rapport ----------------------
+
 
 \newcommand{\UE}[1]{\renewcommand{\UE}{#1}}
 \newcommand{\sujet}[1]{\renewcommand{\sujet}{#1}}
@@ -84,13 +87,27 @@
 \newpage
 }
 
-\newcommand{\insererfigure}[4]{
-\begin{figure}[ht]
+\newcommand{\insererfigure}[5]{
+\begin{figure}[H]
 \centering
-\includegraphics[height=#2]{#1}
+\advance\leftskip-#5
+\advance\rightskip-#5
+\includegraphics[width=#2]{#1}
 \caption{#3}
 \label{fig: #4}
 \end{figure}
+}
+
+\newcommand{\insertScreenshot}[0]{
+\newcount\risitas
+\risitas=10
+\loop
+  \message{coucou \the\risitas}
+  \advance \risitas -1
+\ifnum \risitas>0
+\repeat
+
+    
 }
 
 

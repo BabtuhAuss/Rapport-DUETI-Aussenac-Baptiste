@@ -15,7 +15,12 @@
 \RequirePackage{wallpaper}
 \RequirePackage{nomencl}
 
-\usepackage{eurosym}
+\usepackage{eurosym} % avoir le symbole euro
+\usepackage{wrapfig}  %encadrer les figures de texte
+\usepackage{pgffor}% pour les boucles
+\usepackage[nomessages]{fp}
+
+
 %\makenomenclature
 \RequirePackage{fancyhdr}
 %\pagestyle{fancy}
@@ -98,16 +103,22 @@
 \end{figure}
 }
 
+%commande pour ajouter les captures d'écrans de l'annexe (flemme de tout mettre à la main)
 \newcommand{\insertScreenshot}[0]{
-\newcount\risitas
-\risitas=10
-\loop
-  \message{coucou \the\risitas}
-  \advance \risitas -1
-\ifnum \risitas>0
-\repeat
 
-    
+\foreach \j in {1,3,...,9}{
+    \begin{figure}[t]
+        \ContinuedFloat
+        \foreach \i in {\j,...,3+\j}{
+            \FPeval{\result}{clip(\i+\j)}
+            \begin{subfigure}{0.5\textwidth}
+                \includegraphics[width=0.9\linewidth, height=11cm]{Annexe/\result.png}
+                \caption{Capture \result}
+                \hspace{.25cm}%
+            \end{subfigure} 
+        }   
+    \end{figure}
+}
 }
 
 
